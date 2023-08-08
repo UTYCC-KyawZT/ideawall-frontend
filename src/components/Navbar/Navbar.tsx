@@ -34,7 +34,7 @@ function Navbar() {
               src="/images/logo.png"
               alt=""
             />
-            <span className="font-bold mt-1 ml-1 text-orange-600">IdeaWall</span>
+            <span className="font-bold mt-1 ml-1 text-orange-600 hover:text-orange-500">IdeaWall</span>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -52,7 +52,7 @@ function Navbar() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
             >
               {item.name}
             </a>
@@ -61,7 +61,7 @@ function Navbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="/login"
-            className="flex text-sm font-semibold leading-6 text-gray-900"
+            className="flex text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
           >
             Log in{" "}
             <ArrowRightOnRectangleIcon className="h-6 w-6" aria-hidden="true" />

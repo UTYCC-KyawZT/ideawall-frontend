@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 function about() {
   return (
@@ -53,7 +54,7 @@ function about() {
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Got questions or feedback? Kingston would love to hear from you!
-              Reach out at kyawkingston@gmail.com to connect directly.
+              Reach out at <Link href="mailto:kyawkingston@gmail.com" className="text-orange-600 hover:text-orange-500">kyawkingston@gmail.com</Link> to connect directly.
             </p>
             <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
               Thank You

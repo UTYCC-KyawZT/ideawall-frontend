@@ -25,9 +25,9 @@ function Footer() {
           <Link className="text-gray-400 hover:text-orange-600" href="">
             <svg
               fill="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="w-5 h-5"
               viewBox="0 0 24 24"
             >
@@ -37,9 +37,9 @@ function Footer() {
           <Link className="ml-3 text-gray-400 hover:text-orange-600" href="">
             <svg
               fill="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="w-5 h-5"
               viewBox="0 0 24 24"
             >
@@ -50,9 +50,9 @@ function Footer() {
             <svg
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               className="w-5 h-5"
               viewBox="0 0 24 24"
             >
@@ -64,9 +64,9 @@ function Footer() {
             <svg
               fill="currentColor"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="0"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="0"
               className="w-5 h-5"
               viewBox="0 0 24 24"
             >

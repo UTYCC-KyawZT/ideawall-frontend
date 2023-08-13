@@ -1,6 +1,6 @@
 import React from "react";
 
-function features() {
+function Features() {
   return (
     <div className="bg-white">
       <div className="relative min-h-screen isolate px-6 pt-14 lg:px-8">
@@ -21,13 +21,13 @@ function features() {
             <h1 className="text-4xl font-bold tracking-tight text-orange-600 sm:text-6xl">
               Features
             </h1>
-            <p className="mt-6 text-xl font-semibold leading-8 text-gray-600">
+            <p className="mt-6 text-xl leading-8 text-gray-600">
               Welcome to Idea Wall, where innovative features are designed to
               enhance your note-taking and collaboration experience. Discover
               how Idea Wall empowers you to capture, organize, and collaborate
               on your ideas seamlessly.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               1. Effortless Idea Organization
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -36,7 +36,7 @@ function features() {
               thoughts structured and easily accessible, ensuring you never miss
               a moment of inspiration.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               2. Real-Time Collaboration
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -45,7 +45,7 @@ function features() {
               collaboration. Brainstorm, edit, and build upon ideas together,
               wherever you are.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               3. Permissions and Privacy Control
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -54,7 +54,7 @@ function features() {
               ideas, maintaining complete privacy and ensuring a secure
               collaboration environment.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               4. Intuitive User Interface
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -63,7 +63,7 @@ function features() {
               and Next.js, the interface is responsive and visually appealing,
               making note-taking a joy.
             </p>
-            <p className="mt-6 text-xl font-semibold leading-8 text-gray-600">
+            <p className="mt-12 text-xl font-semibold leading-8 text-gray-600">
               Happy note-taking and ideating!
             </p>
           </div>
@@ -85,4 +85,4 @@ function features() {
   );
 }
 
-export default features;
+export default Features;

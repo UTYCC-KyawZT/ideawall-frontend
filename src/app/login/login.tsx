@@ -1,17 +1,28 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@/hook/useAuth";
 
-export default function login() {
+function Login() {
+  // ** states
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  // ** Hooks
+  const auth = useAuth();
+
+  function handleLogin() {
+    // auth.login;
+    console.log("Email", email);
+    console.log("Password", password);
+    const rememberMe = true;
+    auth.login({ email, password, rememberMe })
+  }
+
   return (
     <div className="bg-white">
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       <div className="relative min-h-screen isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -25,6 +36,7 @@ export default function login() {
             }}
           />
         </div>
+
         <div className="flex min-h-full flex-1 flex-col justify-center mt-10 px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <Image
@@ -40,7 +52,7 @@ export default function login() {
           </div>
 
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" onSubmit={handleLogin} method="post">
               <div>
                 <label
                   htmlFor="email"
@@ -53,6 +65,7 @@ export default function login() {
                     id="email"
                     name="email"
                     type="email"
+                    onChange={(e) => setEmail(e.target.value)}
                     autoComplete="email"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -82,6 +95,7 @@ export default function login() {
                     id="password"
                     name="password"
                     type="password"
+                    onChange={(e) => setPassword(e.target.value)}
                     autoComplete="current-password"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -93,6 +107,7 @@ export default function login() {
                 <button
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  // onClick={() => handleLogin}
                 >
                   Sign in
                 </button>
@@ -131,3 +146,5 @@ export default function login() {
     </div>
   );
 }
+
+export default Login;

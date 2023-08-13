@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
@@ -6,9 +6,11 @@ import {
   Bars3Icon,
   XMarkIcon,
   ArrowRightOnRectangleIcon,
+  ArrowLeftOnRectangleIcon,
+  HomeIcon,
 } from "@heroicons/react/24/outline";
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import { useAuth } from "@/hook/useAuth";
 
 const navigation = [
   { name: "Features", href: "/features" },
@@ -16,7 +18,15 @@ const navigation = [
 ];
 
 function Navbar() {
+  // ** States
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // ** Hooks
+  const auth = useAuth();
+
+  function handleLogout() {
+    auth.logout();
+  }
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -25,16 +35,18 @@ function Navbar() {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5 flex">
+          <a href="/home" className="-m-1.5 p-1.5 flex">
             <span className="sr-only">Your Company</span>
             <Image
               className="h-8 w-auto"
               width={"100"}
               height={"100"}
               src="/images/logo.png"
-              alt=""
+              alt="logo"
             />
-            <span className="font-bold mt-1 ml-1 text-orange-600 hover:text-orange-500">IdeaWall</span>
+            <span className="font-bold mt-1 ml-1 text-orange-600 hover:text-orange-500">
+              IdeaWall
+            </span>
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -59,13 +71,38 @@ function Navbar() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            href="/login"
-            className="flex text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
-          >
-            Log in{" "}
-            <ArrowRightOnRectangleIcon className="h-6 w-6" aria-hidden="true" />
-          </Link>
+          {auth?.user == null ? (
+            <a
+              href="/login"
+              className="flex text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
+            >
+              <ArrowRightOnRectangleIcon
+                className="h-6 w-6"
+                aria-hidden="true"
+              />
+              Log in
+            </a>
+          ) : (
+            <>
+              <a
+                href="/dashboard"
+                className="flex mr-2 text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
+              >
+                <HomeIcon className="h-6 w-6" aria-hidden="true" />
+                Dashboard
+              </a>
+              <a
+                onClick={handleLogout}
+                className="flex text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
+              >
+                <ArrowRightOnRectangleIcon
+                  className="h-6 w-6"
+                  aria-hidden="true"
+                />
+                Logout{" "}
+              </a>
+            </>
+          )}
         </div>
       </nav>
       <Dialog
@@ -77,13 +114,19 @@ function Navbar() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+            <a href="/home" className="-m-1.5 p-1.5 flex">
+              {/* <span className="sr-only text-orange-600">IdeaWall</span> */}
+
               <Image
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
+                className="h-8 w-auto mr-1"
+                src="/images/logo.png"
+                width={100}
+                height={100}
+                alt="logo"
               />
+              <span className="font-bold mt-2 ml-1 text-orange-600 hover:text-orange-500">
+                IdeaWall
+              </span>
             </a>
             <button
               type="button"
@@ -108,12 +151,38 @@ function Navbar() {
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
+                {auth.user ? (
+                  <>
+                    <a
+                      href="/dashboard"
+                      className="flex -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      <HomeIcon className="h-6 w-6" aria-hidden="true" />{" "}
+                      Dashboard
+                    </a>
+                    <a
+                      onClick={handleLogout}
+                      className="flex -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      <ArrowLeftOnRectangleIcon
+                        className="h-6 w-6"
+                        aria-hidden="true"
+                      />{" "}
+                      Logout
+                    </a>
+                  </>
+                ) : (
+                  <a
+                    href="/login"
+                    className="flex -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    <ArrowRightOnRectangleIcon
+                      className="h-6 w-6"
+                      aria-hidden="true"
+                    />{" "}
+                    Log in
+                  </a>
+                )}
               </div>
             </div>
           </div>

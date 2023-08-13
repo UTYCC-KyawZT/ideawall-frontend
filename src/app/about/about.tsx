@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function about() {
+function About() {
   return (
     <div className="bg-white">
       <div className="relative min-h-screen isolate px-6 pt-14 lg:px-8">
@@ -22,12 +22,12 @@ function about() {
             <h1 className="text-4xl font-bold tracking-tight text-orange-600 sm:text-6xl">
               About Idea Wall
             </h1>
-            <p className="mt-6 text-xl font-semibold leading-8 text-gray-600">
+            <p className="mt-6 text-xl leading-8 text-gray-600">
               Welcome to Idea Wall, a passion-driven project crafted by
               Kingston, a solo developer with a mission to simplify your
               note-taking and collaboration experience.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               Our Mission
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -39,7 +39,7 @@ function about() {
               life, share them with others, and foster meaningful
               collaborations.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               Our Story
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -49,14 +49,14 @@ function about() {
               for note-taking and collaboration, Kingston embarked on this
               project with dedication and enthusiasm.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               Contact Kingston
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Got questions or feedback? Kingston would love to hear from you!
               Reach out at <Link href="mailto:kyawkingston@gmail.com" className="text-orange-600 hover:text-orange-500">kyawkingston@gmail.com</Link> to connect directly.
             </p>
-            <h2 className="mt-6 text-2xl font-bold leading-8 text-gray-600">
+            <h2 className="mt-12 text-2xl font-bold leading-8 text-gray-600">
               Thank You
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -64,7 +64,7 @@ function about() {
               of your creative journey and looks forward to making note-taking
               and collaboration an enjoyable experience for you.
             </p>
-            <p className="mt-6 text-xl font-semibold leading-8 text-gray-600">
+            <p className="mt-12 text-xl font-semibold leading-8 text-gray-600">
               Happy note-taking and ideating!
             </p>
           </div>
@@ -86,4 +86,4 @@ function about() {
   );
 }
 
-export default about;
+export default About;

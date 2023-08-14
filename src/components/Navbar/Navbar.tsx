@@ -93,7 +93,7 @@ function Navbar() {
               </a>
               <a
                 onClick={handleLogout}
-                className="flex text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
+                className="flex cursor-pointer text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
               >
                 <ArrowRightOnRectangleIcon
                   className="h-6 w-6"

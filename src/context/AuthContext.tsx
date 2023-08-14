@@ -58,7 +58,14 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           setUser(user);
         }
       } else {
-        router.push("/login");
+        if (
+          pathname === "/" ||
+          pathname === "/home" ||
+          pathname === "/about" ||
+          pathname === "/features"
+        ) {
+          // do nothing
+        } else router.push("/login");
       }
     };
     initAuth();

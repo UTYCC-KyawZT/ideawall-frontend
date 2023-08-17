@@ -55,8 +55,9 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         } else if (pathname === "/register") {
           router.push("/dashboard");
         } else {
-          // const token = user.token.access_token
-          // handleRefreshToken();
+          const token: string | null = user?.userData["refresh-token"];
+          // ** disabled temporarily
+          // handleRefreshToken(token);
           setUser(user);
         }
       } else {
@@ -108,13 +109,13 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const handleRefreshToken = async () => {
+  const handleRefreshToken = async (token: string | null) => {
     const url = process.env.API_URL;
     const refreshToken = {
-      token : user?.refreshToken
-    }
+      token: token,
+    };
 
-    console.log("refresh token:",refreshToken)
+    console.log("refresh token:", refreshToken);
 
     try {
       const response = await axios.post(`${url}auth/token`, refreshToken, {

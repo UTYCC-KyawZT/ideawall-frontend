@@ -61,16 +61,16 @@ function Walls() {
       const data = JSON.parse(userData);
 
       const transformedUser: UserDataType = {
-        id: data.userData._id, // You can set the correct ID if available in the JSON data
-        email: data.userData.email,
-        username: data.userData.username,
-        password: data.userData.password,
-        accessToken: data.userData["access-token"],
-        refreshToken: data.userData["refresh-token"],
-        createdDate: data.userData["created-date"],
-        lastLogin: data.userData["last-login"],
-        lastLogout: data.userData["last-logout"],
-        lastModified: data.userData["last-modified"],
+        id: data?.userData?._id, // You can set the correct ID if available in the JSON data
+        email: data?.userData?.email,
+        username: data?.userData?.username,
+        password: data?.userData?.password,
+        accessToken: data?.userData?.["access-token"],
+        refreshToken: data?.userData?.["refresh-token"],
+        createdDate: data?.userData?.["created-date"],
+        lastLogin: data?.userData?.["last-login"],
+        lastLogout: data?.userData?.["last-logout"],
+        lastModified: data?.userData?.["last-modified"],
       };
       console.log("transformedUser", transformedUser);
       setUser(transformedUser);

@@ -6,7 +6,8 @@ import { createContext, useEffect, useState, ReactNode } from "react";
 // ** Next Import
 import { useRouter, usePathname } from "next/navigation";
 
-import toast from "react-hot-toast";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 import {
@@ -40,7 +41,6 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     console.log("Init Auth...");
     console.log("Env:", process.env.API_URL);
-    console.log("User:", user);
 
     const initAuth = async () => {
       const userData: string | null = localStorage.getItem("userData");
@@ -52,9 +52,11 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           router.replace("/");
         } else if (!user) {
           router.push("/login");
+        } else if (pathname === "/register") {
+          router.push("/dashboard");
         } else {
           // const token = user.token.access_token
-          // handleCheckToken(token)
+          // handleRefreshToken();
           setUser(user);
         }
       } else {
@@ -70,13 +72,10 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     };
     initAuth();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user?.id]);
 
   const handleCheckToken = async (token: string) => {
     const url = process.env.API_URL;
-
-    console.log("Check token...");
-    console.log("Token", token, "User", user);
     if (token) {
       try {
         const response = await fetch(`${url}/auth/me`, {
@@ -98,14 +97,51 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
           // do nothing
         } else {
           console.error(result);
-          toast.error("Timeout, please login again");
+          toast.error("Timeout, please login again!");
           handleLogout();
         }
       } catch (error) {
         console.error(error);
-        toast.error("Timeout, please login again");
+        toast.error("Timeout, please login again!");
         handleLogout();
       }
+    }
+  };
+
+  const handleRefreshToken = async () => {
+    const url = process.env.API_URL;
+    const refreshToken = {
+      token : user?.refreshToken
+    }
+
+    console.log("refresh token:",refreshToken)
+
+    try {
+      const response = await axios.post(`${url}auth/token`, refreshToken, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      const result = response.data;
+
+      console.log("result", result);
+
+      if (result.success) {
+        localStorage.setItem("userData", JSON.stringify(result.data));
+        setUser(result.data);
+        toast.success(result.message);
+
+        router.push("/dashboard");
+      } else {
+        console.error(result);
+        toast.error(result.message);
+        setUser(null);
+      }
+    } catch (error: any) {
+      console.error("Error", error);
+      toast.error("Something went wrong! Please try again.");
     }
   };
 
@@ -152,7 +188,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   const handleLogout = () => {
     setUser(null);
     window.localStorage.removeItem("userData");
-
+    toast.success("Logout successful!");
     // window.localStorage.removeItem('testResult')
     router.push("/login");
   };
@@ -165,7 +201,12 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // ** Return Provider
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return (
+    <>
+      <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
+      <ToastContainer />
+    </>
+  );
 };
 
 export { AuthContext, AuthProvider };

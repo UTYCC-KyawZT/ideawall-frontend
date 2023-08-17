@@ -14,11 +14,10 @@ function Login() {
   const auth = useAuth();
 
   function handleLogin() {
-    // auth.login;
     console.log("Email", email);
     console.log("Password", password);
     const rememberMe = true;
-    auth.login({ email, password, rememberMe })
+    auth.login({ email, password, rememberMe });
   }
 
   return (

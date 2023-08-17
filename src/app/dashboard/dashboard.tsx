@@ -1,7 +1,12 @@
 import React from "react";
-import Link from "next/link";
+// import CaptionCarousel from "@/components/CaptionCarousal/CaptionCarousal";
 
 function Dashboard() {
+  // const captions = [
+  //   "Unleash Your Creativity: Let your ideas flow freely on the canvas of Idea Wall.",
+  //   "Collaborate, Innovate, Elevate: Join hands to transform thoughts into remarkable achievements.",
+  // ];
+
   return (
     <div className="bg-white">
       <div className="relative min-h-screen isolate px-6 pt-14 lg:px-8">
@@ -17,16 +22,25 @@ function Dashboard() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-2xl py-20">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-orange-600 sm:text-6xl">
+            <h1 className="text-4xl mb-10 font-bold tracking-tight text-orange-600 sm:text-6xl">
               Dashboard
             </h1>
-            <p className="mt-6 text-xl leading-8 text-gray-600">
-              Welcome to Idea Wall, a passion-driven project crafted by
-              Kingston, a solo developer with a mission to simplify your
-              note-taking and collaboration experience.
+            {/* <CaptionCarousel captions={captions} /> */}
+            <p className="text-xl mb-10">
+              Unleash Your Creativity: Let your ideas flow freely on the canvas
+              of Idea Wall.
             </p>
+            <h3 className="text-xl mb-5 font-bold tracking-tight text-orange-600">
+              Your Idea Walls
+            </h3>
+            <a
+              href="/walls"
+              className="rounded-md bg-orange-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Go to IdeaWalls
+            </a>
           </div>
         </div>
         <div
